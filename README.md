@@ -24,3 +24,7 @@ TeX ファイル: `paper.tex`
 ```
 $ make paper
 ```
+
+## 動作環境
+
+TeX Live 2013 以降
