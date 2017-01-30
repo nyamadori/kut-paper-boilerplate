@@ -1,0 +1,300 @@
+%% 
+%% This is file `kut-abstract.sty',
+%% 
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from kut-abstract.sty.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{kut-abstract}
+\typeout{ 高知工科大学 情報システム工学科／情報学群 学位論文梗概スタイルファイル}
+\typeout{ $Id: kut-abstract.sty [version 2.1.6], 2013/ 1/30$}
+%\typeout{ by 橋本だー．}
+%%%%%%%%%%%%%%% Redefine Command & Environment %%%%%%%%%%%%%%%%
+%\def\@startsection#1#2#3#4#5#6{%
+%  \if@noskipsec \leavevmode \fi
+%  \par
+%  \@tempskipa #4\relax
+%  \@afterindenttrue
+%  \ifdim \@tempskipa <\z@
+%    \@tempskipa -\@tempskipa \@afterindentfalse
+%  \fi
+%  \if@nobreak
+%    \everypar{\everyparhook}%
+%  \else
+%    \addpenalty\@secpenalty\addvspace\@tempskipa
+%  \fi
+%  \@ifstar
+%    {\@ssect{#3}{#4}{#5}{#6}}%
+%    {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+    {2\Cdp}{\Cdp}{\normalfont\large\rmfamily\gtfamily\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    {2\Cdp}{\Cdp}{\normalfont\normalsize\rmfamily\gtfamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+    {2\Cdp}{\Cdp}{\normalfont\normalsize\rmfamily\gtfamily\bfseries}}
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {2\Cdp}{-1zw}{\normalfont\normalsize\rmfamily\gtfamily\bfseries ■}}
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}%
+    {2\Cdp}{-1zw}{\normalfont\normalsize\rmfamily\gtfamily\bfseries}}
+\long\def\@makecaption#1#2{{\small
+  \advance\leftskip1cm
+  \advance\rightskip1cm
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1\hspace{1zw}#2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1\hspace{1zw}#2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}}
+%%%%%%%%%%%%%%%%%%%%% New Environment %%%%%%%%%%%%%%%%%%%%%%
+\newif\ifDoctorate
+\let\ifDoctorate=\iffalse
+\def\Doctorate{\let\ifDoctorate=\iftrue}
+\newif\ifDoctorateSys
+\let\ifDoctorateSys=\iffalse
+\def\DoctorateSys{\let\ifDoctorateSys=\iftrue}
+\newif\ifDoctorateNet
+\let\ifDoctorateNet=\iffalse
+\def\DoctorateNet{\let\ifDoctorateNet=\iftrue}
+\newif\ifMaster
+\let\ifMaster=\iffalse
+\def\Master{\let\ifMaster=\iftrue}
+\newif\ifMasterSys
+\let\ifMasterSys=\iffalse
+\def\MasterSys{\let\ifMasterSys=\iftrue}
+\newif\ifMasterNet
+\let\ifMasterNet=\iffalse
+\def\MasterNet{\let\ifMasterNet=\iftrue}
+\newif\ifBachelor
+\let\ifBachelor=\iffalse
+\def\Bachelor{\let\ifBachelor=\iftrue}
+\newif\ifScInfo
+\let\ifScInfo=\iffalse
+\def\ScInfo{\let\ifScInfo=\iftrue}
+\newif\ifProject
+\let\ifProject=\iffalse
+\def\Project{\let\ifProject=\iftrue}
+\newif\ifSeminar
+\let\ifSeminar=\iffalse
+\def\Seminar{\let\ifSeminar=\iftrue}
+\let\ifEnglish=\iffalse
+\def\English{\let\ifEnglish=\iftrue}
+\def\years#1{\gdef\@years{#1}}\def\@years{}
+\def\Eyears#1{\gdef\@Eyears{#1}}\def\@Eyears{}
+\def\Etitle#1{\gdef\@Etitle{#1}}\def\@Etitle{}
+\def\idnumber#1{\gdef\@idnumber{#1}}\def\@idnumber{}
+\def\Eauthor#1{\gdef\@Eauthor{#1}}\def\@Eauthor{}
+\def\affiliate#1{\gdef\@affiliate{#1}}\def\@affiliate{}
+\def\Eaffiliate#1{\gdef\@Eaffiliate{#1}}\def\@Eaffiliate{}
+\newenvironment{Abstract}{%
+  \begin{normalsize}%
+    \ifEnglish
+      \setlength\parindent{\@Eindent}%
+      \renewcommand{\@title}{\@Etitle}%
+      \renewcommand{\@author}{\@Eauthor}%
+      \renewcommand{\@affiliate}{\@Eaffiliate}%
+    \else
+      \setlength\parindent{\@Jindent}%
+    \fi
+    \setlength\baselineskip{14pt}%
+    \twocolumn[%
+      \begin{center}%
+        {\Large\textbf{\@title}} \par
+        \vskip 1.5zh
+        {\large
+          \begin{tabular}{c}%
+            \@idnumber\hskip 1.5zw
+            \@author\hskip 1.5zw
+            【\hskip .5zw\@affiliate\hskip .5zw 】
+          \end{tabular}} \par%
+        \ifEnglish \else
+          \ifDoctorate
+            \vskip 2zh
+            {\Large\textbf{\@Etitle}} \par
+            \vskip 1.5zh
+            {\large
+              \begin{tabular}{c}%
+                \@idnumber\hskip 1.5zw
+                \@Eauthor\hskip 1.5zw
+               【\hskip .5zw\@Eaffiliate\hskip .5zw 】
+              \end{tabular}} \par%
+            \vskip 2zh \par
+          \else\ifDoctorateSys
+            \vskip 2zh
+            {\Large\textbf{\@Etitle}} \par
+            \vskip 1.5zh
+            {\large
+              \begin{tabular}{c}%
+                \@idnumber\hskip 1.5zw
+                \@Eauthor\hskip 1.5zw
+               【\hskip .5zw\@Eaffiliate\hskip .5zw 】
+              \end{tabular}} \par%
+            \vskip 2zh \par
+          \else\ifDoctorateNet
+            \vskip 2zh
+            {\Large\textbf{\@Etitle}} \par
+            \vskip 1.5zh
+            {\large
+              \begin{tabular}{c}%
+                \@idnumber\hskip 1.5zw
+                \@Eauthor\hskip 1.5zw
+               【\hskip .5zw\@Eaffiliate\hskip .5zw 】
+              \end{tabular}} \par%
+            \vskip 2zh \par
+          \else\ifMaster
+            \vskip 2zh
+            {\Large\textbf{\@Etitle}} \par
+            \vskip 1.5zh
+            {\large
+              \begin{tabular}{c}%
+                \@idnumber\hskip 1.5zw
+                \@Eauthor\hskip 1.5zw
+               【\hskip .5zw\@Eaffiliate\hskip .5zw 】
+              \end{tabular}} \par%
+            \vskip 2zh \par
+          \else\ifMasterSys
+            \vskip 2zh
+            {\Large\textbf{\@Etitle}} \par
+            \vskip 1.5zh
+            {\large
+              \begin{tabular}{c}%
+                \@idnumber\hskip 1.5zw
+                \@Eauthor\hskip 1.5zw
+               【\hskip .5zw\@Eaffiliate\hskip .5zw 】
+              \end{tabular}} \par%
+            \vskip 2zh \par
+          \else\ifMasterNet
+            \vskip 2zh
+            {\Large\textbf{\@Etitle}} \par
+            \vskip 1.5zh
+            {\large
+              \begin{tabular}{c}%
+                \@idnumber\hskip 1.5zw
+                \@Eauthor\hskip 1.5zw
+               【\hskip .5zw\@Eaffiliate\hskip .5zw 】
+              \end{tabular}} \par%
+            \vskip 2zh
+          \fi\fi\fi\fi\fi\fi
+        \fi
+        \vskip 1zh
+      \end{center}]}%
+  {\end{normalsize}}
+\def\ps@myheadings{%
+  \let\@oddfoot\@empty\let\@evenfoot\@empty
+  \def\@evenhead{\thepage\hfil\leftmark}%
+  \def\@oddhead{{\rightmark}
+    \ifEnglish
+      \footnotesize
+      \@Eyears\@Eposteraname \hskip .5zw
+      \ifDoctorate         \@Edoctorateabstractname\hfil \@Edoctoratecourse
+      \else\ifDoctorateSys \@Edoctorateabstractname\hfil \@Edoctoratesyscourse
+      \else\ifDoctorateNet \@Edoctorateabstractname\hfil \@Edoctoratenetcourse
+      \else\ifMaster       \@Emasterabstractname   \hfil \@Emastercourse
+      \else\ifMasterSys    \@Emasterabstractname   \hfil \@Emastersysdept
+      \else\ifMasterNet    \@Emasterabstractname   \hfil \@Emasternetdept
+      \else                \@Ebachelorabstractname \hfil \ifScInfo\@EbachelordeptScInfo\else\@Ebachelordept\fi   % Bachelor
+      \fi\fi\fi\fi\fi\fi
+    \else
+      \small
+      \@years\@posteraname \hskip .5zw
+      \ifDoctorate         \@doctorateabstractname\hfil \@doctoratecourse
+      \else\ifDoctorateSys \@doctorateabstractname\hfil \@doctoratesyscourse
+      \else\ifDoctorateNet \@doctorateabstractname\hfil \@doctoratenetcourse
+      \else\ifMaster       \@masterabstractname   \hfil \@mastercourse
+      \else\ifMasterSys    \@masterabstractname   \hfil \@mastersysdept
+      \else\ifMasterNet    \@masterabstractname   \hfil \@masternetdept
+      \else\ifProject      \@projectabstractname  \hfil \ifScInfo\@bachelordeptScInfo\else\@bachelordept\fi
+      \else\ifSeminar      \@seminarabstractname  \hfil \ifScInfo\@bachelordeptScInfo\else\@bachelordept\fi
+      \else                \@bachelorabstractname \hfil \ifScInfo\@bachelordeptScInfo\else\@bachelordept\fi     % Bachelor
+      \fi\fi\fi\fi\fi\fi\fi\fi
+    \fi}%
+  \let\@mkboth\@gobbletwo
+  \let\sectionmark\@gobble
+  \let\subsectionmark\@gobble
+}
+%%%%%%%%%%%%%%%%%%% New Command & Macro %%%%%%%%%%%%%%%%%%%%
+\def\Hline{\noalign{\ifnum0=`}\fi
+  \hrule \@height 3\arrayrulewidth \futurelet \@tempa\@xhhline}
+\def\@xhhline{\ifx\@tempa\Hline\vskip \doublerulesep\fi \ifnum0=`{\fi}}
+\newcommand{\up}[1]{\hspace*{-.1zw}\raisebox{.4zh}%
+  {\footnotesize{\kern 0cm{#1}}}}
+\newcommand{\lw}[1]{\smash{\lower2.ex\hbox{#1}}}
+\newcommand{\MARU}[1]{{%
+  \ooalign{\hfil#1\/\hfil\crcr\raise.167ex\hbox{\mathhexbox20D}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%% Indent %%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\@Jindent{1\Cwd}
+\def\@Eindent{2em}
+%%%%%%%%%%%%%%%%%%%% Language setting %%%%%%%%%%%%%%%%%%%%%%
+\def\@posteraname{年度}
+\def\@doctorateabstractname{博士学位論文梗概}
+%\def\@doctoratecourse{高知工科大学大学院 基盤工学専攻 情報システム工学コース}
+\def\@doctoratecourse{高知工科大学大学院 基盤工学専攻}
+\def\@doctoratesyscourse{高知工科大学大学院 基盤工学専攻 情報システムコース}
+\def\@doctoratenetcourse{高知工科大学大学院 基盤工学専攻 情報通信ネットワークコース}
+\def\@masterabstractname{修士学位論文梗概}
+\def\@mastercourse{高知工科大学大学院 基盤工学専攻 情報システム工学コース}
+\def\@mastersysdept{高知工科大学大学院 基盤工学専攻 情報システムコース}
+\def\@masternetdept{高知工科大学大学院 基盤工学専攻 情報通信ネットワークコース}
+%\def\@bachelorabstractname{卒業研究論文梗概}
+\def\@bachelorabstractname{学士学位論文梗概}
+\def\@projectabstractname{プロジェクト研究報告書 梗概}
+\def\@seminarabstractname{特別研究セミナー課題研究報告書 梗概}
+\def\@bachelordept{高知工科大学 情報システム工学科}
+\def\@bachelordeptScInfo{高知工科大学 情報学群}
+\def\@Eposteraname{:}
+\def\@Edoctorateabstractname{Doctorate thesis Abstract}
+%\def\@Edoctoratecourse{Course of Information Systems Engineering, Graduate School of Engineering, Kochi University of Technology}
+\def\@Edoctoratecourse{Graduate School of Engineering, Kochi University of Technology}
+\def\@Edoctoratesyscourse{Information Systems Engineering Course, Graduate School of Engineering, Kochi University of Technology}
+\def\@Edoctoratenetcourse{Information Networking Engineering Course, Graduate School of Engineering, Kochi University of Technology}
+\def\@Emasterabstractname{Master's thesis Abstract}
+\def\@Emastercourse{Course of Information Systems Engineering, Graduate School of Engineering, Kochi University of Technology}
+\def\@Emastersysdept{Information Systems Engineering Course, Graduate School of Engineering, Kochi University of Technology}
+\def\@Emasternetdept{Information Networking Engineering Course, Graduate School of Engineering, Kochi University of Technology}
+\def\@Ebachelorabstractname{Bachelor's thesis Abstract}
+\def\@Ebachelordept{Department of Information Systems Engineering, Kochi University of Technology}
+\def\@EbachelordeptScInfo{School of Information, Kochi University of Technology}
+%%%%%%%%%%%%%%%%%%%%%% Style setting %%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{myheadings}
+\def\left@margin{20mm}
+\def\right@margin{20mm}
+\def\top@margin{25mm}
+\def\bot@margin{25mm}
+\setlength{\columnsep}{5mm}
+\setlength{\oddsidemargin}{\left@margin}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{\left@margin}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\textwidth}{210mm}
+\addtolength{\textwidth}{-\left@margin}
+\addtolength{\textwidth}{-\right@margin}
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{5mm}
+\setlength{\footskip}{15mm}
+\setlength{\topmargin}{\top@margin}
+\addtolength{\topmargin}{-1in}
+\addtolength{\topmargin}{-\headheight}
+\addtolength{\topmargin}{-\headsep}
+\addtolength{\topmargin}{-3mm}
+\setlength{\textheight}{297mm}
+\addtolength{\textheight}{-\top@margin}
+\addtolength{\textheight}{-\bot@margin}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Change for your environment %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\hoffset}{0mm}
+\setlength{\voffset}{0mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\endinput
+%%
+%% End of file `kut-abstract.sty'.

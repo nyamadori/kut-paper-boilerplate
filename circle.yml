@@ -1,0 +1,16 @@
+general:
+  artifacts:
+    - paper.pdf
+    - abstract.pdf
+
+dependencies:
+  override:
+    - sudo apt-get install texlive texlive-lang-cjk
+
+compile:
+  override:
+    - make
+
+test:
+  override:
+    - echo 'No test!'

@@ -1,0 +1,13 @@
+/*.pdf
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.bak
+*.aux
+*.lof
+*.lot
+*.toc
+*.xbb
+*.DS_Store
