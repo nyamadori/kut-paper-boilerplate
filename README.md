@@ -1,5 +1,7 @@
 # kut-paper-boilerplate
 
+[![CircleCI](https://circleci.com/gh/nyamadori/kut-paper-boilerplate.svg?style=svg)](https://circleci.com/gh/nyamadori/kut-paper-boilerplate)
+
 高知工科大学情報学群の学位論文 LaTeX テンプレートです (非公式)。
 `make` コマンド一つで TeX ファイルから PDF ファイルをコンパイルできます。
 
