@@ -4,7 +4,7 @@ REFERENCE_FILE = refs.bib
 # 画像ディレクトリ
 IMAGE_DIR = images/
 
-XBB_SRC_SUFFIXES = %.bmp %.jpg %.jpeg %.png %.pdf
+XBB_SRC_SUFFIXES = %.jpg %.jpeg %.png %.pdf
 XBB_SRC_FILE_PATTERN = $(patsubst \%.%,$(IMAGE_DIR)*.%,$(XBB_SRC_SUFFIXES))
 XBB_SRC_FILES = $(wildcard $(XBB_SRC_FILE_PATTERN))
 
